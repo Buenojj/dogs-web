@@ -36,12 +36,28 @@ const Error = styled.p`
   margin-top: 0.25rem;
 `;
 
-const Input = ({ label, type, name }) => {
+const Input = ({
+  label,
+  type,
+  name,
+  value,
+  setValue,
+  onChange,
+  error,
+  onBlur,
+}) => {
   return (
     <DivWrapper>
       <LabelStyled htmlFor={name}>{label}</LabelStyled>
-      <InputStyled type={type} id={name} name={name} />
-      <Error>Error</Error>
+      <InputStyled
+        type={type}
+        id={name}
+        name={name}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+      />
+      {error && <Error>{error}</Error>}
     </DivWrapper>
   );
 };
