@@ -5,17 +5,20 @@ import Header from './Components/Header';
 import Home from './Components/Home';
 import Login from './Components/Login/Login';
 import GlobalStyle from './globalStyles';
+import { UserStorage } from './UserContext';
 
 function App() {
   return (
     <BrowserRouter>
-      <GlobalStyle />
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login/*" element={<Login />} />
-      </Routes>
-      <Footer />
+      <UserStorage>
+        <GlobalStyle />
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login/*" element={<Login />} />
+        </Routes>
+        <Footer />
+      </UserStorage>
     </BrowserRouter>
   );
 }

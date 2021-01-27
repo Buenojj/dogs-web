@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { ReactComponent as Dogs } from '../Assets/dogs.svg';
 import usuario from '../Assets/usuario.svg';
+import { UserContext } from '../UserContext';
 
 const HeaderStyle = styled.header`
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
@@ -41,13 +42,19 @@ const LoginLink = styled(Link)`
 `;
 
 const Header = () => {
+  const { data } = React.useContext(UserContext);
+
   return (
     <HeaderStyle>
       <NavStyle className="container">
         <HomeLink to="/" aria-label="Dogs - Home">
           <Dogs />
         </HomeLink>
-        <LoginLink to="/login">Login / Criar</LoginLink>
+        {data ? (
+          <LoginLink to="/conta">{data.nome}</LoginLink>
+        ) : (
+          <LoginLink to="/login">Login / Criar</LoginLink>
+        )}
       </NavStyle>
     </HeaderStyle>
   );
