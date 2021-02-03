@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Spectral:wght@700&display=swap');
+
   * {
     box-sizing: border-box;
   }
@@ -10,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0px;
     color: #333;
     --type-first: Helvetica, Arial, sans-serif;
-    --type-second: 'Spectral', Georgia;
+    --type-second: 'Spectral', serif;
     font-family: var(--type-first);
   }
 
@@ -35,7 +37,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: var(--type-first);
     color: #333;
   }
-
+  
   .container {
     max-width: 50rem;
     padding: 0 1rem;
@@ -44,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
 
   a {
     text-decoration: none;
+    color: #333;
   }
 `;
 

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { ReactComponent as Dogs } from '../Assets/dogs.svg';
 import usuario from '../Assets/usuario.svg';
 import { UserContext } from '../UserContext';
+import { NavStyle } from '../styles';
 
 const HeaderStyle = styled.header`
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
@@ -12,13 +13,6 @@ const HeaderStyle = styled.header`
   z-index: 100;
   background: white;
   top: 0px;
-`;
-
-const NavStyle = styled.nav`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 4rem;
 `;
 
 const HomeLink = styled(Link)`
@@ -46,7 +40,7 @@ const Header = () => {
 
   return (
     <HeaderStyle>
-      <NavStyle className="container">
+      <NavStyle>
         <HomeLink to="/" aria-label="Dogs - Home">
           <Dogs />
         </HomeLink>
