@@ -5,20 +5,53 @@ import LoginCreate from './LoginCreate';
 import LoginPasswordLost from './LoginPasswordLost';
 import LoginPasswordReset from './LoginPasswordReset';
 import { UserContext } from '../../UserContext';
+import loginImg from '../../Assets/login.jpg';
+import styled from 'styled-components';
+
+const LoginSection = styled.section`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 100vh;
+  gap: 2rem;
+  &:before {
+    content: '';
+    display: block;
+    background: url(${loginImg}) no-repeat center center;
+    background-size: cover;
+  }
+
+  @media (max-width: 40rem) {
+    grid-template-columns: 1fr;
+    &:before {
+      display: none;
+    }
+  }
+`;
+
+const LoginForms = styled.div`
+  max-width: 30rem;
+  padding: 1rem;
+
+  @media (max-width: 40rem) {
+    max-width: 100%;
+  }
+`;
 
 const Login = () => {
   const { login } = React.useContext(UserContext);
 
   if (login === true) return <Navigate to="/conta" />;
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<LoginForm />} />
-        <Route path="criar" element={<LoginCreate />} />
-        <Route path="perdeu" element={<LoginPasswordLost />} />
-        <Route path="resetar" element={<LoginPasswordReset />} />
-      </Routes>
-    </div>
+    <LoginSection>
+      <LoginForms>
+        <Routes>
+          <Route path="/" element={<LoginForm />} />
+          <Route path="criar" element={<LoginCreate />} />
+          <Route path="perdeu" element={<LoginPasswordLost />} />
+          <Route path="resetar" element={<LoginPasswordReset />} />
+        </Routes>
+      </LoginForms>
+    </LoginSection>
   );
 };
 
