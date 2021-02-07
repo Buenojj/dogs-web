@@ -1,6 +1,12 @@
 import styled, { keyframes, css } from 'styled-components';
 import { Link } from 'react-router-dom';
 
+export const SectionContainer = styled.section`
+  max-width: 50rem;
+  padding: 0 1rem;
+  margin: 0 auto;
+`;
+
 export const Title = styled.h1`
   font-family: var(--type-second);
   line-height: 1;

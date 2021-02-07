@@ -36,7 +36,7 @@ const LoginLink = styled(Link)`
 `;
 
 const Header = () => {
-  const { data, userLogout } = React.useContext(UserContext);
+  const { data } = React.useContext(UserContext);
 
   return (
     <HeaderStyle>
@@ -45,10 +45,7 @@ const Header = () => {
           <Dogs />
         </HomeLink>
         {data ? (
-          <LoginLink to="/conta">
-            {data.nome}
-            <button onClick={userLogout}>Sair</button>
-          </LoginLink>
+          <LoginLink to="/conta">{data.nome}</LoginLink>
         ) : (
           <LoginLink to="/login">Login / Criar</LoginLink>
         )}
