@@ -1,73 +1,81 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
 import { UserContext } from '../../UserContext';
 import { ReactComponent as MinhasFotos } from '../../Assets/feed.svg';
 import { ReactComponent as Estatisticas } from '../../Assets/estatisticas.svg';
 import { ReactComponent as AdicionarFoto } from '../../Assets/adicionar.svg';
 import { ReactComponent as Sair } from '../../Assets/sair.svg';
-import styled from 'styled-components';
-
-const StyledLink = styled(NavLink)`
-  &.active {
-    background: white;
-    box-shadow: 0 0 0 3px #fea;
-    border-color: #fb1;
-
-    svg > * {
-      fill: #fb1;
-    }
-  }
-`;
-
-const HeaderNav = styled.nav`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1rem;
-
-  a,
-  button {
-    background: #eee;
-    border-radius: 0.2rem;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid transparent;
-    transition: 0.1s;
-    cursor: pointer;
-    &:hover {
-      background: white;
-      box-shadow: 0 0 0 3px #eee;
-      border-color: #333;
-      outline: none;
-    }
-  }
-`;
+import {
+  StyledLink,
+  HeaderNav,
+  HeaderNavMobile,
+  MobileButton,
+} from './UserHeadNav.styled';
+import useMedia from '../../Hooks/useMedia';
+import { NavLink, useLocation } from 'react-router-dom';
 
 const UserHeaderNav = () => {
-  const [mobile, setMobile] = React.useState(null);
   const { userLogout } = useContext(UserContext);
+  const mobile = useMedia('(max-width: 40rem)');
+  const [active, setActive] = React.useState(false);
+  const [mobileMenu, setMobileMenu] = React.useState(false);
+
+  const { pathname } = useLocation();
+
+  React.useEffect(() => {
+    setActive(false);
+    setMobileMenu(false);
+  }, [pathname]);
+
+  const handleClick = function () {
+    setActive(!active);
+    setMobileMenu(!mobileMenu);
+  };
 
   return (
-    <HeaderNav>
-      <StyledLink to="/conta" end>
-        <MinhasFotos />
-        {mobile && 'Minhas Fotos'}
-      </StyledLink>
-      <StyledLink to="/conta/estatisticas">
-        <Estatisticas />
-        {mobile && 'Estatísticas'}
-      </StyledLink>
-      <StyledLink to="/conta/postar">
-        <AdicionarFoto />
-        {mobile && 'Adicionar Foto'}
-      </StyledLink>
-      <button onClick={userLogout}>
-        <Sair />
-        {mobile && 'Sair'}
-      </button>
-    </HeaderNav>
+    <>
+      {mobile ? (
+        <>
+          <MobileButton
+            active={active}
+            aria-label="Menu"
+            onClick={handleClick}
+          ></MobileButton>
+          <HeaderNavMobile active={active}>
+            <NavLink to="/conta" end>
+              <MinhasFotos />
+              Minhas Fotos
+            </NavLink>
+            <NavLink to="/conta/estatisticas">
+              <Estatisticas />
+              Estatísticas
+            </NavLink>
+            <NavLink to="/conta/postar">
+              <AdicionarFoto />
+              Adicionar Foto
+            </NavLink>
+            <button onClick={userLogout}>
+              <Sair />
+              Sair
+            </button>
+          </HeaderNavMobile>
+        </>
+      ) : (
+        <HeaderNav>
+          <StyledLink to="/conta" end>
+            <MinhasFotos />
+          </StyledLink>
+          <StyledLink to="/conta/estatisticas">
+            <Estatisticas />
+          </StyledLink>
+          <StyledLink to="/conta/postar">
+            <AdicionarFoto />
+          </StyledLink>
+          <button onClick={userLogout}>
+            <Sair />
+          </button>
+        </HeaderNav>
+      )}
+    </>
   );
 };
 
