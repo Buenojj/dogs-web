@@ -6,7 +6,7 @@ import Error from '../Helper/Error';
 import Loading from '../Helper/Loading';
 import { UlStyled } from './FeedPhotos.styled';
 
-const FeedPhotos = () => {
+const FeedPhotos = ({ setModalPhoto }) => {
   const { data, loading, error, request } = useFetch();
 
   React.useEffect(() => {
@@ -24,7 +24,11 @@ const FeedPhotos = () => {
     return (
       <UlStyled>
         {data.map((photo) => (
-          <FeedPhotosItem key={photo.id} photo={photo} />
+          <FeedPhotosItem
+            key={photo.id}
+            photo={photo}
+            setModalPhoto={setModalPhoto}
+          />
         ))}
       </UlStyled>
     );
