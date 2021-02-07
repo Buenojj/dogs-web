@@ -7,6 +7,10 @@ export const SectionContainer = styled.section`
   margin: 0 auto;
 `;
 
+export const MainSectionContainer = styled(SectionContainer)`
+  margin-top: 4rem;
+`;
+
 export const Title = styled.h1`
   font-family: var(--type-second);
   line-height: 1;
@@ -95,6 +99,12 @@ const animeLeft = keyframes`
 `;
 
 export const AnimatedSection = styled.section`
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: ${animeLeft} 0.3s forwards;
+`;
+
+export const AnimationLeft = css`
   opacity: 0;
   transform: translateX(-20px);
   animation: ${animeLeft} 0.3s forwards;
