@@ -8,7 +8,7 @@ export const SectionContainer = styled.section`
 `;
 
 export const MainSectionContainer = styled(SectionContainer)`
-  margin-top: 4rem;
+  margin-top: 2rem;
 `;
 
 export const Title = styled.h1`
