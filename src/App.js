@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AppStyled, AppBody } from './App.styled';
 import Footer from './Components/Footer';
 import Header from './Components/Header';
 import ProtectedRoute from './Components/Helper/ProtectedRoute';
@@ -14,21 +15,25 @@ import { UserStorage } from './UserContext';
 
 function App() {
   return (
-    <BrowserRouter>
-      <UserStorage>
-        <GlobalStyle />
-        <Header />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="login/*" element={<Login />} />
-          <ProtectedRoute path="conta/*" element={<User />} />
-          <Route path="foto/:id" element={<Photo />} />
-          <Route path="perfil/:user" element={<UserProfile />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-        <Footer />
-      </UserStorage>
-    </BrowserRouter>
+    <AppStyled>
+      <BrowserRouter>
+        <UserStorage>
+          <GlobalStyle />
+          <Header />
+          <AppBody>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="login/*" element={<Login />} />
+              <ProtectedRoute path="conta/*" element={<User />} />
+              <Route path="foto/:id" element={<Photo />} />
+              <Route path="perfil/:user" element={<UserProfile />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </AppBody>
+          <Footer />
+        </UserStorage>
+      </BrowserRouter>
+    </AppStyled>
   );
 }
 
