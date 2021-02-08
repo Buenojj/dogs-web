@@ -14,39 +14,74 @@ import {
 } from './PhotoContent.styled';
 import PhotoDelete from './PhotoDelete';
 
-const PhotoContent = ({ data }) => {
+const PhotoContent = ({ data, single }) => {
   const user = React.useContext(UserContext);
   const { photo, comments } = data;
 
-  return (
-    <PhotoContentStyled>
-      <PhotoContentImg>
-        <Image alt={photo.title} src={photo.src}></Image>
-      </PhotoContentImg>
-      <PhotoContentDetails>
-        <div>
-          <PhotoContentAuthor>
-            {user.data && user.data.username === photo.author ? (
-              <PhotoDelete id={photo.id} />
-            ) : (
-              <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
-            )}
-            <PhotoContentViews>{photo.acessos}</PhotoContentViews>
-          </PhotoContentAuthor>
-          <Title>
-            <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
-          </Title>
-          <PhotoContentAttributes>
-            <li>{photo.peso} kg</li>
-            <li>
-              {photo.idade === 1 ? `${photo.idade} ano` : `${photo.idade} anos`}
-            </li>
-          </PhotoContentAttributes>
-        </div>
-      </PhotoContentDetails>
-      <PhotoComments id={photo.id} comments={comments} />
-    </PhotoContentStyled>
-  );
+  if (!single)
+    return (
+      <PhotoContentStyled>
+        <PhotoContentImg>
+          <Image alt={photo.title} src={photo.src}></Image>
+        </PhotoContentImg>
+        <PhotoContentDetails>
+          <div>
+            <PhotoContentAuthor>
+              {user.data && user.data.username === photo.author ? (
+                <PhotoDelete id={photo.id} />
+              ) : (
+                <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+              )}
+              <PhotoContentViews>{photo.acessos}</PhotoContentViews>
+            </PhotoContentAuthor>
+            <Title>
+              <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
+            </Title>
+            <PhotoContentAttributes>
+              <li>{photo.peso} kg</li>
+              <li>
+                {photo.idade === 1
+                  ? `${photo.idade} ano`
+                  : `${photo.idade} anos`}
+              </li>
+            </PhotoContentAttributes>
+          </div>
+        </PhotoContentDetails>
+        <PhotoComments id={photo.id} comments={comments} />
+      </PhotoContentStyled>
+    );
+  else
+    return (
+      <PhotoContentStyled>
+        <PhotoContentImg single={true}>
+          <Image alt={photo.title} src={photo.src}></Image>
+        </PhotoContentImg>
+        <PhotoContentDetails single={true}>
+          <div>
+            <PhotoContentAuthor>
+              {user.data && user.data.username === photo.author ? (
+                <PhotoDelete id={photo.id} />
+              ) : (
+                <Link to={`/perfil/${photo.author}`}>@{photo.author}</Link>
+              )}
+              <PhotoContentViews>{photo.acessos}</PhotoContentViews>
+            </PhotoContentAuthor>
+            <Title>
+              <Link to={`/foto/${photo.id}`}>{photo.title}</Link>
+            </Title>
+            <PhotoContentAttributes>
+              <li>{photo.peso} kg</li>
+              <li>
+                {photo.idade === 1
+                  ? `${photo.idade} ano`
+                  : `${photo.idade} anos`}
+              </li>
+            </PhotoContentAttributes>
+          </div>
+        </PhotoContentDetails>
+        <PhotoComments id={photo.id} comments={comments} />
+      </PhotoContentStyled>
+    );
 };
 
 export default PhotoContent;

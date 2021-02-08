@@ -10,11 +10,11 @@ const scaleUp = keyframes`
 
 export const PhotoContentStyled = styled.div`
   margin: auto;
-  height: 36rem;
+  height: ${(props) => (props.single ? 'auto' : '36rem')};
   border-radius: 0.2rem;
   background: white;
   display: grid;
-  grid-template-columns: 36rem 20rem;
+  grid-template-columns: ${(props) => (props.single ? '1fr' : '36rem 20rem')};
   grid-template-rows: auto 1fr auto;
   overflow: hidden;
   opacity: 0;
@@ -30,7 +30,9 @@ export const PhotoContentStyled = styled.div`
 `;
 
 export const PhotoContentImg = styled.div`
-  grid-row: 1/4;
+  grid-row: ${(props) => (props.single ? '1' : '1/4')};
+  border-radius: ${(props) => (props.single ? '.4rem' : '')};
+  overflow: ${(props) => (props.single ? 'hidden' : '')};
 
   @media (max-width: 64rem) {
     grid-row: 1;
@@ -38,7 +40,7 @@ export const PhotoContentImg = styled.div`
 `;
 
 export const PhotoContentDetails = styled.div`
-  padding: 2rem 2rem 0 2rem;
+  padding: ${(props) => (props.single ? '1rem 0' : '2rem 2rem 0 2rem')};
 `;
 
 export const PhotoContentAuthor = styled.p`
