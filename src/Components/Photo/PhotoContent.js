@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Title } from '../../styles';
 import { UserContext } from '../../UserContext';
+import Image from '../Helper/Image';
 import PhotoComments from './PhotoComments';
 import {
   PhotoContentStyled,
@@ -20,7 +21,7 @@ const PhotoContent = ({ data }) => {
   return (
     <PhotoContentStyled>
       <PhotoContentImg>
-        <img src={photo.src} alt={photo.title} />
+        <Image alt={photo.title} src={photo.src}></Image>
       </PhotoContentImg>
       <PhotoContentDetails>
         <div>

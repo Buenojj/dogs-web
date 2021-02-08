@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from '../Helper/Image';
 import { LiStyled } from './FeedPhotosItem.styled';
 
 const FeedPhotosItem = ({ photo, setModalPhoto }) => {
@@ -8,7 +9,7 @@ const FeedPhotosItem = ({ photo, setModalPhoto }) => {
 
   return (
     <LiStyled onClick={handleClick}>
-      <img src={photo.src} alt={photo.title} />
+      <Image alt={photo.title} src={photo.src}></Image>
       <span>{photo.acessos}</span>
     </LiStyled>
   );
