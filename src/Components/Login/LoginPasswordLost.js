@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title } from '../../styles';
+import { AnimatedSection, Title } from '../../styles';
 import Button from '../Forms/Button';
 import Input from '../Forms/Input';
 import useForm from '../../Hooks/useForm';
@@ -25,7 +25,7 @@ const LoginPasswordLost = () => {
   }
 
   return (
-    <div>
+    <AnimatedSection>
       <Head title="Perdeu a Senha" />
       <Title>Perdeu a senha?</Title>
       {data ? (
@@ -41,7 +41,7 @@ const LoginPasswordLost = () => {
           <Error error={error} />
         </form>
       )}
-    </div>
+    </AnimatedSection>
   );
 };
 

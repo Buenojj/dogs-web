@@ -7,6 +7,10 @@ export const PhotoSection = styled.section`
   grid-template-columns: 1fr 1fr;
   gap: 2rem;
 
+  @media (max-width: 40rem) {
+    grid-template-columns: 1fr;
+  }
+
   #img {
     margin-bottom: 1rem;
   }

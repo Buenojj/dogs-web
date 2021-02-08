@@ -4,7 +4,7 @@ import Input from '../Forms/Input';
 import useForm from '../../Hooks/useForm';
 import useFetch from '../../Hooks/useFetch';
 import { PASSWORD_RESET } from '../../api';
-import { Title } from '../../styles';
+import { AnimatedSection, Title } from '../../styles';
 import Error from '../Helper/Error';
 import { useNavigate } from 'react-router-dom';
 import Head from '../Helper/Head';
@@ -44,7 +44,7 @@ const LoginPasswordReset = () => {
   }, []);
 
   return (
-    <div>
+    <AnimatedSection>
       <Head title="Resete a Senha" />
       <Title>Resete sua senha</Title>
       <form onSubmit={handleSubmit}>
@@ -61,7 +61,7 @@ const LoginPasswordReset = () => {
         )}
         <Error error={error} />
       </form>
-    </div>
+    </AnimatedSection>
   );
 };
 

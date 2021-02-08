@@ -30,6 +30,7 @@ const PerdeuLink = styled(Link)`
 
 const CadastroDiv = styled.div`
   margin-top: 4rem;
+  margin-bottom: 4rem;
 
   p {
     margin: 2rem 0;
@@ -60,7 +61,7 @@ const LoginForm = () => {
         ) : (
           <Button>Entrar</Button>
         )}
-        <Error error={error} />
+        <Error error={error && 'Dados incorretos'} />
       </FormStyled>
       <PerdeuLink to="/login/perdeu">Perdeu a Senha?</PerdeuLink>
       <CadastroDiv>
