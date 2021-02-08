@@ -7,6 +7,7 @@ import LoginPasswordReset from './LoginPasswordReset';
 import { UserContext } from '../../UserContext';
 import loginImg from '../../Assets/login.jpg';
 import styled from 'styled-components';
+import NotFound from '../NotFound';
 
 const LoginSection = styled.section`
   display: grid;
@@ -49,6 +50,7 @@ const Login = () => {
           <Route path="criar" element={<LoginCreate />} />
           <Route path="perdeu" element={<LoginPasswordLost />} />
           <Route path="resetar" element={<LoginPasswordReset />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </LoginForms>
     </LoginSection>
