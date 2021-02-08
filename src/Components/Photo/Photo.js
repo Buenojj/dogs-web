@@ -6,6 +6,7 @@ import Loading from '../Helper/Loading';
 import Error from '../Helper/Error';
 import PhotoContent from './PhotoContent';
 import { MainSectionContainer } from '../../styles';
+import Head from '../Helper/Head';
 
 const Photo = () => {
   const { id } = useParams();
@@ -21,6 +22,7 @@ const Photo = () => {
   if (data)
     return (
       <MainSectionContainer>
+        <Head title={data.photo.title} />
         <PhotoContent single={true} data={data} />
       </MainSectionContainer>
     );

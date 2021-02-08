@@ -8,6 +8,7 @@ import { UserContext } from '../../UserContext';
 import loginImg from '../../Assets/login.jpg';
 import styled from 'styled-components';
 import NotFound from '../NotFound';
+import Head from '../Helper/Head';
 
 const LoginSection = styled.section`
   display: grid;
@@ -44,6 +45,7 @@ const Login = () => {
   if (login === true) return <Navigate to="/conta" />;
   return (
     <LoginSection>
+      <Head title="Login" />
       <LoginForms>
         <Routes>
           <Route path="/" element={<LoginForm />} />

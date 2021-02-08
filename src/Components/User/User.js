@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { SectionContainer } from '../../styles';
 import { UserContext } from '../../UserContext';
 import Feed from '../Feed/Feed';
+import Head from '../Helper/Head';
 import NotFound from '../NotFound';
 import UserHeader from './UserHeader';
 import UserPhotoPost from './UserPhotoPost';
@@ -13,6 +14,7 @@ const User = () => {
 
   return (
     <SectionContainer>
+      <Head title="Minha Conta" />
       <UserHeader />
       <Routes>
         <Route path="/" element={<Feed user={data.id} />} />
